@@ -1,0 +1,44 @@
+<div ng-controller="CheckController">
+	<div ng-hide="status" class="center">
+		<div class="preloader-wrapper big active">
+			<div class="spinner-layer spinner-blue-only">
+				<div class="circle-clipper left">
+					<div class="circle"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row" ng-show="status">
+		<div class="row">
+			<h5><b>Room : </b>{{ room[0].room }}</h5>
+		</div>
+
+		<div class="collection">
+			<a ng-repeat="check in checks" href="#listCheck/{{ check.d }}/{{ room[0].id }}/1" class="collection-item">
+				{{ check.d | date:"dd-MM-yyyy"}}
+				<span class="badge">{{ check.c }}</span>
+			</a>
+		</div>      
+
+		<div class="row">
+			<div class="col s8">
+				<ul ng-if="lastPage != 1 && lastPage != 0" class="pagination">
+					<li ng-if="pageNo == 1" class="disabled"><a><i class="material-icons">chevron_left</i></a></li>
+					<li ng-if="pageNo != 1" class="waves-effect"><a href="#check/{{ room[0].id }}/{{ (pageNo * 1) - 1 }}"><i class="material-icons">chevron_left</i></a></li>
+
+					<div ng-repeat="page in total_page">
+				    	<li ng-if="pageNo == page" class="active"><a href="#check/{{ room[0].id }}/{{ page }}">{{ page }}</a></li>
+				    	<li ng-if="pageNo != page" class="waves-effect"><a href="#check/{{ room[0].id }}/{{ page }}">{{ page }}</a></li>
+					</div>
+
+					<li ng-if="pageNo == lastPage" class="disabled"><a><i class="material-icons">chevron_right</i></a></li>
+					<li ng-if="pageNo != lastPage" class="waves-effect"><a href="#check/{{ room[0].id }}/{{ (pageNo * 1) + 1 }}"><i class="material-icons">chevron_right</i></a></li>
+				</ul>
+			</div>
+
+			<a class="waves-effect waves-light btn right" href="#list">Back</a>
+
+	</div>
+
+</div>

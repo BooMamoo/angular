@@ -1,0 +1,85 @@
+.content
+{
+    margin-top: 90px;
+    min-height: 429px;
+}
+
+.space
+{
+    margin-left: 50px; 
+    margin-right: 50px;
+}
+
+.text-form
+{
+    font-size: 20px;
+    margin-bottom: 50px;
+    margin-top: -5px;
+}
+
+.form
+{
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.list, .back
+{
+    margin-top: 50px;    
+}
+
+.show
+{
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.no-info
+{
+    font-size: 50px;
+    margin: 20px;
+    padding: 40px;
+}
+
+.list
+{
+    margin-top: 50px;
+}
+
+.list
+{
+    margin-top: 70px;
+    margin-bottom: 50px;
+}
+
+.back
+{
+    margin-top: 20px;
+}
+
+.title
+{
+    margin-bottom: 30px;
+}
+
+.select-box
+{
+    margin-top: 20px;
+}
+
+.list-content
+{
+    padding: 40px;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+.btn-check
+{
+    cursor: auto;
+}
+
+.card-upload
+{
+    overflow: visible;
+}
