@@ -16,8 +16,11 @@ class CreateLogsTable extends Migration {
 			$table->increments('id');
 			$table->integer('card_id');
 			$table->integer('room_id');
+			$table->string('date');
 			$table->timestamp('access');
 			$table->timestamps();
+
+			$table->index(array('room_id', 'date'));
 		} );
 	}
 

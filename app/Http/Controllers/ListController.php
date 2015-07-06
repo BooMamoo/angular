@@ -48,8 +48,12 @@ class ListController extends Controller {
 		$total_row = Logs::select(DB::raw('COUNT(DISTINCT date(access)) as count'))->where('room_id', '=', $room)->get();
 		$total_page = ceil((int)($total_row[0]->count) / $pagelen);
 		$start = ($page - 1) * $pagelen;
+		// $days = Logs::with("card")->where("logs.access", "=", function($query) use ($room) {
+		// 	$query->select(DB::raw('MAX(tmp.access)'))->from('logs as tmp')->whereRaw('date(logs.access) = date(tmp.access)')->where('tmp.room_id', '=', $room);
+		// })->orderBy('access')->skip($start)->take($pagelen)->get();
+
 		$days = Logs::with("card")->where("logs.access", "=", function($query) use ($room) {
-			$query->select(DB::raw('MAX(tmp.access)'))->from('logs as tmp')->whereRaw('date(logs.access) = date(tmp.access)')->where('tmp.room_id', '=', $room);
+			$query->select(DB::raw('MAX(tmp.access)'))->from('logs as tmp')->whereRaw('logs.date = tmp.date')->where('tmp.room_id', '=', $room);
 		})->orderBy('access')->skip($start)->take($pagelen)->get();
 
 		$room = Rooms::where('id', '=', $room)->get();

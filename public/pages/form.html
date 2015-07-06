@@ -1,93 +1,89 @@
-<div ng-controller="FormController">
-
-	<div class="card grey lighten-4 card-upload">
-		<div class="col s12">
-			<div class="card-content black-text">
-				<div class="title">
-					<span class="card-title black-text">Upload Card</span>
-				</div>
-				
-				<div>
-					<div class="file-field input-field">
-						<input class="file-path validate" type="text"/ ng-model="fileNameCard">
-						<div class="btn">
-							<span>File</span>
-							<input type="file" ngf-select="" ng-model="filesCard">
-						</div>
+<div class="card grey lighten-4 card-upload">
+	<div class="col s12">
+		<div class="card-content black-text">
+			<div class="title">
+				<span class="card-title black-text">Upload Card</span>
+			</div>
+			
+			<div>
+				<div class="file-field input-field">
+					<input class="file-path validate" type="text"/ ng-model="fileNameCard">
+					<div class="btn">
+						<span>File</span>
+						<input type="file" ngf-select="" ng-model="filesCard">
 					</div>
-					<form id="selectFormCard">
-						<div class="select-box">
-							<select ng-model="model.idCard" convert-to-number class="black-text">
-								<option value="" disabled selected>Choose room</option>
-								<option my-repeat-directive ng-repeat="room in rooms" value="{{ room.id }}" class="black-text">Room : {{ room.room }}</option>
-							</select>
-						</div>
-					</form>
+				</div>
+				<form id="selectFormCard">
+					<div class="select-box">
+						<select ng-model="model.idCard" convert-to-number class="black-text">
+							<option value="" disabled selected>Choose room</option>
+							<option my-repeat-directive ng-repeat="room in rooms" value="{{ room.id }}" class="black-text">Room : {{ room.room }}</option>
+						</select>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<div class="card-action">
+			<a></a>
+
+			<div ng-show="showCard" class="row">
+				<div class="col s12">
+					<div class="progress">
+			            <div class="indeterminate"></div>
+			        </div>
 				</div>
 			</div>
 
-			<div class="card-action">
-				<a></a>
-
-				<div ng-show="showCard" class="row">
-					<div class="col s12">
-						<div class="progress">
-				            <div class="indeterminate"></div>
-				        </div>
-					</div>
-				</div>
-
-				<a ng-hide="showCard" href="" ng-click="uploadCard(filesCard)" ngf-reset-model-on-click="true" class="right">Submit</a>
-				
-			</div>
-		</div>	
-	</div>
-
-	<div class="row"></div>
-
-	<div class="card grey lighten-4 card-upload">
-		<div class="col s12">
-			<div class="card-content black-text">
-				<div class="title">
-					<span class="card-title black-text">Upload Log</span>
-				</div>
-				
-				<div>
-					<div class="file-field input-field">
-						<input class="file-path validate" type="text"/ ng-model="fileNameLog">
-						<div class="btn">
-							<span>File</span>
-							<input type="file" ngf-select="" ng-model="filesLog">
-						</div>
-					</div>
-
-					<form id="selectFormLog">
-						<div class="input-field col s12 select-box">
-							<select ng-model="model.idLog" convert-to-number class="black-text">
-								<option value="" disabled selected>Choose room</option>
-								<option my-repeat-directive ng-repeat="room in rooms" value="{{ room.id }}" class="black-text">Room : {{ room.room }}</option>
-							</select>
-						</div>
-					</form>
-				</div>
-			</div>
-
-			<div class="card-action">
-				<a></a>
-
-				<div ng-show="showLog" class="row">
-					<div class="col s12">
-						<div class="progress">
-				            <div class="indeterminate"></div>
-				        </div>
-					</div>
-				</div>
-
-				<a ng-hide="showLog" href="" ng-click="uploadLog(filesLog)" ngf-reset-model-on-click="true" class="right">Submit</a>
-			</div>
-		</div>	
-	</div>
-
-	<div class="row"></div>
-
+			<a ng-hide="showCard" href="" ng-click="uploadCard(filesCard)" ngf-reset-model-on-click="true" class="right">Submit</a>
+			
+		</div>
+	</div>	
 </div>
+
+<div class="row"></div>
+
+<div class="card grey lighten-4 card-upload">
+	<div class="col s12">
+		<div class="card-content black-text">
+			<div class="title">
+				<span class="card-title black-text">Upload Log</span>
+			</div>
+			
+			<div>
+				<div class="file-field input-field">
+					<input class="file-path validate" type="text"/ ng-model="fileNameLog">
+					<div class="btn">
+						<span>File</span>
+						<input type="file" ngf-select="" ng-model="filesLog">
+					</div>
+				</div>
+
+				<form id="selectFormLog">
+					<div class="input-field col s12 select-box">
+						<select ng-model="model.idLog" convert-to-number class="black-text">
+							<option value="" disabled selected>Choose room</option>
+							<option my-repeat-directive ng-repeat="room in rooms" value="{{ room.id }}" class="black-text">Room : {{ room.room }}</option>
+						</select>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<div class="card-action">
+			<a></a>
+
+			<div ng-show="showLog" class="row">
+				<div class="col s12">
+					<div class="progress">
+			            <div class="indeterminate"></div>
+			        </div>
+				</div>
+			</div>
+
+			<a ng-hide="showLog" href="" ng-click="uploadLog(filesLog)" ngf-reset-model-on-click="true" class="right">Submit</a>
+		</div>
+	</div>	
+</div>
+
+<div class="row"></div>

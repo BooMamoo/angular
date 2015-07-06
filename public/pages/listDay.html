@@ -1,71 +1,68 @@
-<div ng-controller="ListDayController">
-	<div ng-hide="status" class="center">
-		<div class="preloader-wrapper big active">
-			<div class="spinner-layer spinner-blue-only">
-				<div class="circle-clipper left">
-					<div class="circle"></div>
-				</div>
+<div ng-hide="status" class="center">
+	<div class="preloader-wrapper big active">
+		<div class="spinner-layer spinner-blue-only">
+			<div class="circle-clipper left">
+				<div class="circle"></div>
 			</div>
-		</div>
-	</div>
-
-	<div ng-show="status">
-		<div ng-show="show" class="show blue-grey lighten-5">
-		
-			<p class="text-form teal-text center"> {{ day | date:"dd-MM-yyyy" }}'s Logs </p>
-
-			<table class="hoverable">
-				<thead>
-					<tr>
-						<th>Number</th>
-						<th>ID</th>
-						<th>Name</th>
-						<th>Room</th>
-						<th>Date</th>
-						<th>Time</th> 
-					</tr>    
-				</thead>				
-
-				<tbody ng-repeat="show in shows">
-					<tr>
-						<td> {{ $index + 1 }} </td>
-						<td> {{ show.card.card_id }} </td>
-						<td> {{ show.card.name }} </td>
-						<td> {{ show.room.room }} </td>
-						<td> {{ show.access | date:"dd-MM-yyyy" }} </td>
-						<td> {{ show.access | date:"HH:mm:ss" }} </td>
-					</tr>
-				</tbody>     
-			</table>
-
-		</div>
-
-		<div ng-hide="show" class="show blue-grey lighten-5 no-info center">
-			No information
-		</div>
-
-		<div class="row">
-			<div class="col s8">
-				<ul ng-if="lastPage != 1 && lastPage != 0" class="pagination">
-					<li><a href="#listDay/{{ date }}/{{ room }}/1"><i class="material-icons">skip_previous</i></a></li>
-
-					<li ng-if="pageNo == 1" class="disabled"><a><i class="material-icons">chevron_left</i></a></li>
-					<li ng-if="pageNo != 1" class="waves-effect"><a href="#listDay/{{ date }}/{{ room }}/{{ (pageNo * 1) - 1 }}"><i class="material-icons">chevron_left</i></a></li>
-
-					<div ng-repeat="page in total_page">
-				    	<li ng-if="pageNo == page" class="active"><a href="#listDay/{{ date }}/{{ room }}/{{ page }}">{{ page }}</a></li>
-				    	<li ng-if="pageNo != page" class="waves-effect"><a href="#listDay/{{ date }}/{{ room }}/{{ page }}">{{ page }}</a></li>
-					</div>
-
-					<li ng-if="pageNo == lastPage" class="disabled"><a><i class="material-icons">chevron_right</i></a></li>
-					<li ng-if="pageNo != lastPage" class="waves-effect"><a href="#listDay/{{ date }}/{{ room }}/{{ (pageNo * 1) + 1 }}"><i class="material-icons">chevron_right</i></a></li>
-
-					<li><a href="#listDay/{{ date }}/{{ room }}/{{ lastPage }}"><i class="material-icons">skip_next</i></a></li>
-				</ul>
-			</div>
-
-			<a class="waves-effect waves-light btn right back" href="#day/{{ room }}/1">Back</a>
 		</div>
 	</div>
 </div>
+
+<div ng-show="status">
+	<div ng-show="show" class="show blue-grey lighten-5">
 	
+		<p class="text-form teal-text center"> {{ day | date:"dd-MM-yyyy" }}'s Logs </p>
+
+		<table class="hoverable">
+			<thead>
+				<tr>
+					<th>Number</th>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Room</th>
+					<th>Date</th>
+					<th>Time</th> 
+				</tr>    
+			</thead>				
+
+			<tbody ng-repeat="show in shows">
+				<tr>
+					<td> {{ $index + 1 }} </td>
+					<td> {{ show.card.card_id }} </td>
+					<td> {{ show.card.name }} </td>
+					<td> {{ show.room.room }} </td>
+					<td> {{ show.access | date:"dd-MM-yyyy" }} </td>
+					<td> {{ show.access | date:"HH:mm:ss" }} </td>
+				</tr>
+			</tbody>     
+		</table>
+
+	</div>
+
+	<div ng-hide="show" class="show blue-grey lighten-5 no-info center">
+		No information
+	</div>
+
+	<div class="row">
+		<div class="col s8">
+			<ul ng-if="lastPage != 1 && lastPage != 0" class="pagination">
+				<li><a href="#listDay/{{ date }}/{{ room }}/1"><i class="material-icons">skip_previous</i></a></li>
+
+				<li ng-if="pageNo == 1" class="disabled"><a><i class="material-icons">chevron_left</i></a></li>
+				<li ng-if="pageNo != 1" class="waves-effect"><a href="#listDay/{{ date }}/{{ room }}/{{ (pageNo * 1) - 1 }}"><i class="material-icons">chevron_left</i></a></li>
+
+				<div ng-repeat="page in total_page">
+			    	<li ng-if="pageNo == page" class="active"><a href="#listDay/{{ date }}/{{ room }}/{{ page }}">{{ page }}</a></li>
+			    	<li ng-if="pageNo != page" class="waves-effect"><a href="#listDay/{{ date }}/{{ room }}/{{ page }}">{{ page }}</a></li>
+				</div>
+
+				<li ng-if="pageNo == lastPage" class="disabled"><a><i class="material-icons">chevron_right</i></a></li>
+				<li ng-if="pageNo != lastPage" class="waves-effect"><a href="#listDay/{{ date }}/{{ room }}/{{ (pageNo * 1) + 1 }}"><i class="material-icons">chevron_right</i></a></li>
+
+				<li><a href="#listDay/{{ date }}/{{ room }}/{{ lastPage }}"><i class="material-icons">skip_next</i></a></li>
+			</ul>
+		</div>
+
+		<a class="waves-effect waves-light btn right back" href="#day/{{ room }}/1">Back</a>
+	</div>
+</div>

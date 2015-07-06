@@ -166,6 +166,7 @@ class FormController extends Controller {
 							$log = new Logs;
 							$log->card_id = $query[0]->id;
 							$log->room_id = $room;
+							$log->date = date("d-m-Y", strtotime($date));
 							$log->access = $date;
 							$log->save();
 						}
@@ -193,6 +194,7 @@ class FormController extends Controller {
 								$log = new Logs;
 								$log->card_id = $query[0]->id;
 								$log->room_id = $room;
+								$log->date = date("d-m-Y", strtotime($data[3]));
 								$log->access = $date;
 								$log->save();
 							}			
@@ -225,6 +227,7 @@ class FormController extends Controller {
 							$log = new Logs;
 							$log->card_id = $query[0]->id;
 							$log->room_id = $room;
+							$log->date = date("d-m-Y", strtotime($tmp[9]));
 							$log->access = $tmp[9];
 							$log->save();
 						}

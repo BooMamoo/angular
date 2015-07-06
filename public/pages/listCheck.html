@@ -1,66 +1,64 @@
-<div ng-controller="ListCheckController">
-	<div ng-hide="status" class="center">
-		<div class="preloader-wrapper big active">
-			<div class="spinner-layer spinner-blue-only">
-				<div class="circle-clipper left">
-					<div class="circle"></div>
-				</div>
+<div ng-hide="status" class="center">
+	<div class="preloader-wrapper big active">
+		<div class="spinner-layer spinner-blue-only">
+			<div class="circle-clipper left">
+				<div class="circle"></div>
 			</div>
 		</div>
 	</div>
+</div>
 
-	<div ng-show="status">
-		<div class="show blue-grey lighten-5" ng-show="show">
-		
-			<p class="text-form teal-text center"> {{ day | date:"HH-MM-yyyy" }}'s Logs </p>
+<div ng-show="status">
+	<div class="show blue-grey lighten-5" ng-show="show">
+	
+		<p class="text-form teal-text center"> {{ day | date:"HH-MM-yyyy" }}'s Logs </p>
 
-			<table class="hoverable">
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Name</th>
-						<th>Room</th>
-						<th>First Access</th>
-						<th class="center">Check</th> 
-					</tr>    
-				</thead>				
+		<table class="hoverable">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Room</th>
+					<th>First Access</th>
+					<th class="center">Check</th> 
+				</tr>    
+			</thead>				
 
-				<tbody>
-					<tr ng-repeat="print in prints">
-						<td> {{ print.id }} </td>
-						<td> {{ print.name }} </td>
-						<td> {{ print.room_name }} </td>
-						<td ng-show="{{ print.show }}"> {{ print.access | date:"HH:mm:ss" }} </td>
-						<td ng-hide="{{ print.show }}">No information</td>					
-						<td class="center" ng-show="{{ print.show }}"><a class="btn green btn-check">Present</a> </td>
-						<td class="center" ng-hide="{{ print.show }}"><a class="btn red btn-check">Absent</a> </td>
-					</tr>
-				</tbody>     
-			</table>
+			<tbody>
+				<tr ng-repeat="print in prints">
+					<td> {{ print.id }} </td>
+					<td> {{ print.name }} </td>
+					<td> {{ print.room_name }} </td>
+					<td ng-show="{{ print.show }}"> {{ print.access | date:"HH:mm:ss" }} </td>
+					<td ng-hide="{{ print.show }}">No information</td>					
+					<td class="center" ng-show="{{ print.show }}"><a class="btn green btn-check">Present</a> </td>
+					<td class="center" ng-hide="{{ print.show }}"><a class="btn red btn-check">Absent</a> </td>
+				</tr>
+			</tbody>     
+		</table>
 
+	</div>
+
+	<div class="row">
+		<div class="col s8">
+			<ul ng-if="lastPage != 1 && lastPage != 0" class="pagination">
+				<li><a href="#listCheck/{{ date }}/{{ room }}/1"><i class="material-icons">skip_previous</i></a></li>
+
+				<li ng-if="pageNo == 1" class="disabled"><a><i class="material-icons">chevron_left</i></a></li>
+				<li ng-if="pageNo != 1" class="waves-effect"><a href="#listCheck/{{ date }}/{{ room }}/{{ (pageNo * 1) - 1 }}"><i class="material-icons">chevron_left</i></a></li>
+
+				<div ng-repeat="page in total_page">
+			    	<li ng-if="pageNo == page" class="active"><a href="#listCheck/{{ date }}/{{ room }}/{{ page }}">{{ page }}</a></li>
+			    	<li ng-if="pageNo != page" class="waves-effect"><a href="#listCheck/{{ date }}/{{ room }}/{{ page }}">{{ page }}</a></li>
+				</div>
+
+				<li ng-if="pageNo == lastPage" class="disabled"><a><i class="material-icons">chevron_right</i></a></li>
+				<li ng-if="pageNo != lastPage" class="waves-effect"><a href="#listCheck/{{ date }}/{{ room }}/{{ (pageNo * 1) + 1 }}"><i class="material-icons">chevron_right</i></a></li>
+
+				<li><a href="#listCheck/{{ date }}/{{ room }}/{{ lastPage }}"><i class="material-icons">skip_next</i></a></li>
+			</ul>
 		</div>
 
-		<div class="row">
-			<div class="col s8">
-				<ul ng-if="lastPage != 1 && lastPage != 0" class="pagination">
-					<li><a href="#listCheck/{{ date }}/{{ room }}/1"><i class="material-icons">skip_previous</i></a></li>
-
-					<li ng-if="pageNo == 1" class="disabled"><a><i class="material-icons">chevron_left</i></a></li>
-					<li ng-if="pageNo != 1" class="waves-effect"><a href="#listCheck/{{ date }}/{{ room }}/{{ (pageNo * 1) - 1 }}"><i class="material-icons">chevron_left</i></a></li>
-
-					<div ng-repeat="page in total_page">
-				    	<li ng-if="pageNo == page" class="active"><a href="#listCheck/{{ date }}/{{ room }}/{{ page }}">{{ page }}</a></li>
-				    	<li ng-if="pageNo != page" class="waves-effect"><a href="#listCheck/{{ date }}/{{ room }}/{{ page }}">{{ page }}</a></li>
-					</div>
-
-					<li ng-if="pageNo == lastPage" class="disabled"><a><i class="material-icons">chevron_right</i></a></li>
-					<li ng-if="pageNo != lastPage" class="waves-effect"><a href="#listCheck/{{ date }}/{{ room }}/{{ (pageNo * 1) + 1 }}"><i class="material-icons">chevron_right</i></a></li>
-
-					<li><a href="#listCheck/{{ date }}/{{ room }}/{{ lastPage }}"><i class="material-icons">skip_next</i></a></li>
-				</ul>
-			</div>
-
-			<a class="waves-effect waves-light btn right back" href="#check/{{ room }}/1">Back</a>
-		</div>
+		<a class="waves-effect waves-light btn right back" href="#check/{{ room }}/1">Back</a>
 	</div>
 </div>
