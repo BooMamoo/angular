@@ -43,6 +43,8 @@
 		<div class="row">
 			<div class="col s8">
 				<ul ng-if="lastPage != 1 && lastPage != 0" class="pagination">
+					<li><a href="#listCheck/{{ date }}/{{ room }}/1"><i class="material-icons">skip_previous</i></a></li>
+
 					<li ng-if="pageNo == 1" class="disabled"><a><i class="material-icons">chevron_left</i></a></li>
 					<li ng-if="pageNo != 1" class="waves-effect"><a href="#listCheck/{{ date }}/{{ room }}/{{ (pageNo * 1) - 1 }}"><i class="material-icons">chevron_left</i></a></li>
 
@@ -52,8 +54,9 @@
 					</div>
 
 					<li ng-if="pageNo == lastPage" class="disabled"><a><i class="material-icons">chevron_right</i></a></li>
-					<li ng-if="pageNo != lastPage" class="waves-effect"><a href="#listCheck/{{ date }}/{{ room }}/{{ (pageNo 
-					* 1) + 1 }}"><i class="material-icons">chevron_right</i></a></li>
+					<li ng-if="pageNo != lastPage" class="waves-effect"><a href="#listCheck/{{ date }}/{{ room }}/{{ (pageNo * 1) + 1 }}"><i class="material-icons">chevron_right</i></a></li>
+
+					<li><a href="#listCheck/{{ date }}/{{ room }}/{{ lastPage }}"><i class="material-icons">skip_next</i></a></li>
 				</ul>
 			</div>
 
