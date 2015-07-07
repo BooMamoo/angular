@@ -23,6 +23,7 @@
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-route.js"></script>	-->
 		<script src="js/angular.js"></script> 
 		<script src="js/angular-route.js"></script> 
+<!--	<script src="js/angular-resource.js"></script>	-->
 		<script src="js/ng-file-upload-shim.min.js"></script> 
 		<script src="js/ng-file-upload.min.js"></script> 
 		<script src="js/app.js"></script>

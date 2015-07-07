@@ -80,6 +80,7 @@ class ListController extends Controller {
 	{
 		$rooms = Rooms::all();
 		$status = true;
+		
 		return compact("rooms", "status");
 	}
 
@@ -95,7 +96,7 @@ class ListController extends Controller {
 		$card_id = $card_id[0]->card_id;
 
 		$status = true;
-;
+
 		return compact("shows", "name", "card_id", "total_page", "status");
 	}
 

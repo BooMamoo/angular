@@ -1,5 +1,14 @@
 var app = angular.module("app", ["ngRoute", 'ngFileUpload']);
 
+// var app = angular.module("app", ["ngRoute", 'ngFileUpload', 'ngResource']);
+// app.factory('Room' , ['$resource', function($resource){
+// 	return $resource('/room', {}, {
+// 		query : {
+// 			isArray: false
+// 		}
+// 	});
+// }]);
+
 app.config(function($routeProvider) {
 	$routeProvider.when('/', {
 		templateUrl: 'pages/index.html',
@@ -12,6 +21,12 @@ app.config(function($routeProvider) {
 
 	$routeProvider.when('/list', {
 		templateUrl: 'pages/list.html',
+		controller: 'RoomController',
+		// resolve: {
+		// 	roomData: ['$http', function($http){
+		// 		return $http.get("/room");
+		// 	}]
+		// }
 	});
 
 	$routeProvider.when('/name/:room/:page', {
