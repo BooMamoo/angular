@@ -2,7 +2,7 @@ app.controller("DayController", function($scope, $http, $routeParams)
 {
 	$scope.status = false;
 
-	$http.get("/day/" + $routeParams.room + "/" + $routeParams.page)
+	$http.get("/dayinfo/" + $routeParams.room + "/" + $routeParams.page)
 	.success(function(response) {
 		$scope.days = response.days;
 		$scope.room = response.room;

@@ -5,5 +5,5 @@
 	<div ng-view>
 
 	</div>
-
+	
 @endsection

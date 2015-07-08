@@ -1,7 +1,7 @@
 app.controller("ListCheckController", function($scope, $http, $routeParams) {
 	$scope.status = false;
 
-	$http.get("/listCheck/" + $routeParams.day + "/" + $routeParams.room + "/" + $routeParams.page)
+	$http.get("/listCheckinfo/" + $routeParams.day + "/" + $routeParams.room + "/" + $routeParams.page)
 	.success(function(response) {
 		$scope.shows = response.shows;
 		$scope.day = response.day;

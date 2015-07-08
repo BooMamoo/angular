@@ -1,5 +1,5 @@
 app.controller("ListController", function($scope, $http, $routeParams) {
-	$http.get("/list/" + $routeParams.room)
+	$http.get("/listinfo/" + $routeParams.room)
 	.success(function(response) {
 		$scope.cards = response.cards;
 		$scope.days = response.days;

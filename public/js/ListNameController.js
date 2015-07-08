@@ -1,7 +1,7 @@
 app.controller("ListNameController", function($scope, $http, $routeParams) {
 	$scope.status = false;
 
-	$http.get("listName/" + $routeParams.id + "/" + $routeParams.room + "/" + $routeParams.page)
+	$http.get("listNameinfo/" + $routeParams.id + "/" + $routeParams.room + "/" + $routeParams.page)
 	.success(function(response) {
 		$scope.shows = response.shows;
 		$scope.name = response.name;

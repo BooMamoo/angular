@@ -1,8 +1,12 @@
-<div class="welcome center blue-grey lighten-5">
+<div ng-hide="status" class="welcome center blue-grey lighten-5">
 		<p> Welcome :D </p>
 </div>
 
+<div ng-show="status" class="welcome center blue-grey lighten-5">
+		<p> Welcome, {{ name }} :D </p>
+</div>
+
 <div>
-	<a href="#form" class="waves-effect waves-light btn left"><i class="mdi-file-cloud left"></i> Forms </a>
-	<a href="#list" class="waves-effect waves-light btn right"><i class="mdi-file-cloud right"></i> Lists </a>
+	<a ng-show="status" href="form" class="waves-effect waves-light btn left"><i class="mdi-file-cloud left"></i> Forms </a>
+	<a href="list" class="waves-effect waves-light btn right"><i class="mdi-file-cloud right"></i> Lists </a>
 </div>

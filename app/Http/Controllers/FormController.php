@@ -15,7 +15,9 @@ class FormController extends Controller {
 	public function index()
 	{
 		$rooms = Rooms::all();
-		return compact("rooms");
+		$status = true;
+
+		return compact("rooms", "status");
 	}
 
 	public function store_card(Request $request)

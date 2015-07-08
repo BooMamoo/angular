@@ -1,7 +1,7 @@
 app.controller("RoomController", function($scope, $http) {
 	$scope.status = false;
 
-	$http.get("/room")
+	$http.get("/roominfo")
 	.success(function(response) {
 		$scope.rooms = response.rooms;
 		$scope.status = response.status;

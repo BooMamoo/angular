@@ -9,9 +9,10 @@ var app = angular.module("app", ["ngRoute", 'ngFileUpload']);
 // 	});
 // }]);
 
-app.config(function($routeProvider) {
+app.config(function($routeProvider, $locationProvider) {
 	$routeProvider.when('/', {
 		templateUrl: 'pages/index.html',
+		controller: 'StatusController'
 	});
 
 	$routeProvider.when('/form', {
@@ -63,5 +64,5 @@ app.config(function($routeProvider) {
 		redirectTo: '/'
 	});
 
-	
+	$locationProvider.html5Mode(true);
 });

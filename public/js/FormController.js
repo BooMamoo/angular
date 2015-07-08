@@ -1,4 +1,4 @@
-app.controller('FormController', ['$scope', 'Upload', '$http', function ($scope, Upload, $http) 
+app.controller('FormController', ['$scope', 'Upload', '$http', '$location', '$window', function ($scope, Upload, $http, $location, $window) 
 {
    $scope.fileNameCard = "";
    $scope.fileNameLog = "";
@@ -8,12 +8,19 @@ app.controller('FormController', ['$scope', 'Upload', '$http', function ($scope,
    $scope.filesLog[0] = "";
    $scope.showCard = false;
    $scope.showLog = false;
+   $scope.status = false;
 
-
-    $http.get("form")
+    $http.get("form/info")
     .success(function(response) 
     {
         $scope.rooms = response.rooms;
+        $scope.status = response.status;
+    })
+    .error(function(response, status) {
+        if(status == 401)
+        {
+            $window.location = "/auth/login";
+        }
     });
 
     $scope.$watch('filesCard', function () 

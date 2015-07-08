@@ -2,7 +2,7 @@ app.controller("NameController", function($scope, $http, $routeParams)
 {
 	$scope.status = false;
 
-	$http.get("/name/" + $routeParams.room + "/" + $routeParams.page)
+	$http.get("/nameinfo/" + $routeParams.room + "/" + $routeParams.page)
 	.success(function(response) {
 		$scope.cards = response.cards;
 		$scope.room = response.room;

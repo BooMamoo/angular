@@ -2,7 +2,7 @@ app.controller("CheckController", function($scope, $http, $routeParams)
 {
 	$scope.status = false;
 
-	$http.get("/check/" + $routeParams.room + "/" + $routeParams.page)
+	$http.get("/checkinfo/" + $routeParams.room + "/" + $routeParams.page)
 	.success(function(response) {
 		$scope.checks = response.checks;
 		$scope.room = response.room;

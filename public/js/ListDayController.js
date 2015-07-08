@@ -1,7 +1,7 @@
 app.controller("ListDayController", function($scope, $http, $routeParams) {
 	$scope.status = false;
 
-	$http.get("/listDay/" + $routeParams.day + "/" + $routeParams.room + "/" + $routeParams.page)
+	$http.get("/listDayinfo/" + $routeParams.day + "/" + $routeParams.room + "/" + $routeParams.page)
 	.success(function(response) {
 		$scope.shows = response.shows;
 		$scope.day = response.day;

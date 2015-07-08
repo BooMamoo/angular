@@ -2,6 +2,8 @@
 
 <html>
 	<head>
+		<base href="/">
+
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,6 +29,7 @@
 		<script src="js/ng-file-upload-shim.min.js"></script> 
 		<script src="js/ng-file-upload.min.js"></script> 
 		<script src="js/app.js"></script>
+		<script src="js/StatusController.js"></script>
 		<script src="js/FormController.js"></script>
 		<script src="js/RoomController.js"></script>
 		<script src="js/ListController.js"></script>
@@ -44,11 +47,23 @@
 
 		<nav>
 		    <div class="nav-wrapper cyan">
-			<a href="{{ url('#/') }}" class="brand-logo space"> Access Logs </a>
+			<a href="{{ url('/') }}" class="brand-logo space"> Access Logs </a>
 			<ul id="nav-mobile" class="right hide-on-med-and-down space">
 
-				<li><a href="{{ url('#/form') }}"> Forms </a></li>
-				<li><a href="{{ url('#/list') }}"> Lists </a></li>
+				@if(!Auth::guest())
+					<li><a href="{{ url('/form') }}"> Forms </a></li>
+				@endif
+
+				<li><a href="{{ url('/list') }}"> Lists </a></li>
+
+				@if (Auth::guest())
+					<li><a href="{{ url('/auth/login') }}" target="_self">Login</a></li>
+				@else
+					<li><a class="dropdown-button" href="" data-activates="dropdown1"> {{ Auth::user()->name }} <i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+					<ul id="dropdown1" class="dropdown-content">
+						<li><a href="{{ url('/auth/logout') }}" target="_self">Logout</a></li>
+					</ul>
+				@endif
 				<!--
 				<li><a class="dropdown-button" href="" data-activates="dropdown1"> Lists <i class="mdi-navigation-arrow-drop-down right"></i></a></li>
 				<ul id="dropdown1" class="dropdown-content">
