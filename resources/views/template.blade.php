@@ -15,6 +15,7 @@
 <!--	<link rel="stylesheet" href="materialize/css/materialize.min.css">		-->
 		<link rel="stylesheet" href="css/template.css">
 		<link rel="stylesheet" href="css/welcome.css">
+		<link rel="stylesheet" href="css/angular-chart.css">
 
 <!--	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>	-->
 		<script src="js/jquery.min.js"></script>
@@ -28,6 +29,8 @@
 <!--	<script src="js/angular-resource.js"></script>	-->
 		<script src="js/ng-file-upload-shim.min.js"></script> 
 		<script src="js/ng-file-upload.min.js"></script> 
+		<script src="js/Chart.js"></script> 
+		<script src="js/angular-chart.js"></script> 
 		<script src="js/app.js"></script>
 		<script src="js/StatusController.js"></script>
 		<script src="js/FormController.js"></script>
@@ -39,6 +42,7 @@
 		<script src="js/ListNameController.js"></script>
 		<script src="js/ListDayController.js"></script>
 		<script src="js/ListCheckController.js"></script>
+		<script src="js/ChartController.js"></script>
 
 		<title> Access Logs </title>
 	</head>

@@ -23,7 +23,7 @@
     border-radius: 10px;
 }
 
-.list, .back
+.back
 {
     margin-top: 50px;    
 }
@@ -39,11 +39,6 @@
     font-size: 50px;
     margin: 20px;
     padding: 40px;
-}
-
-.list
-{
-    margin-top: 50px;
 }
 
 .list
@@ -82,4 +77,16 @@
 .card-upload
 {
     overflow: visible;
+}
+
+.chart-content
+{
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.chart-text
+{
+    font-size: 20px;
+    margin-bottom: 50px;
 }

@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use DB;
+use Auth;
 use Carbon;
 use App\Cards;
 use App\Logs;
@@ -12,20 +13,25 @@ use Illuminate\Http\Request;
 
 class ListController extends Controller {
 
-	public function index($room)
+	public function chart($room)
 	{
-		$cards = Cards::with("lastLog")->where('room_id', '=', $room)->get();
-		$test = Cards::with("lastLog")->where('room_id', '=', $room)->skip(0)->take(5)->get();
-		dd($test);
-		$days = Logs::with("card")->where('room_id', '=', $room)->where("logs.access", "=", function($query) {
-			$query->select(DB::raw('MAX(tmp.access)'))->from('logs as tmp')->whereRaw('date(logs.access) = date(tmp.access)');
-		})->orderBy('access')->get();
+		// $cards = Cards::with("lastLog")->where('room_id', '=', $room)->get();
+		// $test = Cards::with("lastLog")->where('room_id', '=', $room)->skip(0)->take(5)->get();
+		// dd($test);
+		// $days = Logs::with("card")->where('room_id', '=', $room)->where("logs.access", "=", function($query) {
+		// 	$query->select(DB::raw('MAX(tmp.access)'))->from('logs as tmp')->whereRaw('date(logs.access) = date(tmp.access)');
+		// })->orderBy('access')->get();
 
-		$checks = Logs::where('room_id', '=', $room)->select(DB::raw('date(access) as d, count(distinct card_id) as c'))->groupBy('d')->get(); 
+		// $checks = Logs::where('room_id', '=', $room)->select(DB::raw('date(access) as d, count(distinct card_id) as c'))->groupBy('d')->get(); 
 		
-		$room = Rooms::where('id', '=', $room)->get();
+		// $room = Rooms::where('id', '=', $room)->get();
 
-		return compact("cards", "days", "checks", "room");
+		// return compact("cards", "days", "checks", "room");
+
+		$totalCharts = Logs::select(DB::raw('COUNT(*) as total, DATE_FORMAT(access, "%Y %m") as month'))->where('room_id', '=', $room)->groupBy('month')->get();
+		$numCharts = Logs::select(DB::raw('COUNT(DISTINCT(card_id)) as num, DATE_FORMAT(access, "%Y %m") as month'))->where('room_id', '=', $room)->groupBy('month')->get();
+
+		return compact("totalCharts", "numCharts");
 	}
 
 	public function name($room, $page)
@@ -80,8 +86,17 @@ class ListController extends Controller {
 	{
 		$rooms = Rooms::all();
 		$status = true;
+
+		if(Auth::check())
+		{
+			$isLogin = true;
+		}
+		else
+		{
+			$isLogin = false;
+		}
 		
-		return compact("rooms", "status");
+		return compact("rooms", "status", "isLogin");
 	}
 
 	public function listName($id, $room, $page)

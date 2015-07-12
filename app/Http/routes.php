@@ -36,6 +36,7 @@ Route::get('listinfo/{room}', 'ListController@index');
 Route::get('listNameinfo/{id}/{room}/{page}', 'ListController@listName');
 Route::get('listDayinfo/{day}/{room}/{page}', 'ListController@listDay');
 Route::get('listCheckinfo/{day}/{room}/{page}', 'ListController@listCheck');
+Route::get('chartinfo/{room}', 'ListController@chart');
 
 
 Route::controllers([

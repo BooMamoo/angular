@@ -14,7 +14,8 @@
 		<div class="row">
 			<h5>Room : {{ room.room }}</h5>
 		</div>
-		<div class="row">
+
+		<div class="row" ng-hide="isLogin">
 			<div class="col s12 m4">
 				<div class="icon-block">
 					<h2 class="center light-blue-text"><i class="material-icons medium">person_pin</i></h2>
@@ -42,5 +43,42 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="row" ng-show="isLogin">
+			<div class="col s12 m3">
+				<div class="icon-block">
+					<h2 class="center light-blue-text"><i class="material-icons medium">person_pin</i></h2>
+					<div class="center"><a class="waves-effect waves-light btn center" href="name/{{ room.id }}/1">Names</a></div>
+
+					<p class="light">For showing employee access log sorted by the name of the people, room {{ room.room }}.</p>
+				</div>
+			</div>
+
+			<div class="col s12 m3">
+				<div class="icon-block">
+					<h2 class="center light-blue-text"><i class="material-icons medium">credit_card</i></h2>
+					<div class="center"><a class="waves-effect waves-light btn center" href="day/{{ room.id }}/1">Days</a></div>
+
+					<p class="light">For showing employee access log by day, room {{ room.room }}.</p>
+				</div>
+			</div>
+
+			<div class="col s12 m3">
+				<div class="icon-block">
+					<h2 class="center light-blue-text"><i class="material-icons medium">done</i></h2>
+					<div class="center"><a class="waves-effect waves-light btn center" href="check/{{ room.id }}/1">Checks</a></div>
+
+					<p class="light">For showing checklist of employee, room {{ room.room }}.</p>
+				</div>
+			</div>
+
+			<div class="col s12 m3">
+				<div class="icon-block">
+					<h2 class="center light-blue-text"><i class="material-icons medium">equalizer</i></h2>
+					<div class="center"><a class="waves-effect waves-light btn center" href="chart/{{ room.id }}">Chart</a></div>
+
+					<p class="light">For showing every access logs and the number of accessing people in each month, room {{ room.room }}.</p>
+				</div>
+			</div>
 	</div>
 </div>

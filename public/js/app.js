@@ -1,4 +1,4 @@
-var app = angular.module("app", ["ngRoute", 'ngFileUpload']);
+var app = angular.module("app", ["ngRoute", 'ngFileUpload', "chart.js"]);
 
 // var app = angular.module("app", ["ngRoute", 'ngFileUpload', 'ngResource']);
 // app.factory('Room' , ['$resource', function($resource){
@@ -58,6 +58,11 @@ app.config(function($routeProvider, $locationProvider) {
 	$routeProvider.when('/listCheck/:day/:room/:page', {
 		templateUrl: 'pages/listCheck.html',
 		controller: 'ListCheckController'
+	});
+
+	$routeProvider.when('/chart/:room', {
+		templateUrl: 'pages/chart.html',
+		controller: 'ChartController'
 	});
 
 	$routeProvider.otherwise({

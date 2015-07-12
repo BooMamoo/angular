@@ -5,6 +5,7 @@ app.controller("RoomController", function($scope, $http) {
 	.success(function(response) {
 		$scope.rooms = response.rooms;
 		$scope.status = response.status;
+		$scope.isLogin = response.isLogin;
 	});
 });
 
